@@ -24,9 +24,9 @@ vagrant provision --provision-with master-key,node01-key,node02-key
 
 if [ "$(version $openshift_release)" -gt "$(version 3.7)" ]; then
     vagrant ssh master \
-        -c 'ansible-playbook /home/vagrant/openshift-ansible/playbooks/prerequisites.yml &&
-            ansible-playbook /home/vagrant/openshift-ansible/playbooks/deploy_cluster.yml'
+        -c 'ansible-playbook -vvv /home/vagrant/openshift-ansible/playbooks/prerequisites.yml &&
+            ansible-playbook -vvv /home/vagrant/openshift-ansible/playbooks/deploy_cluster.yml'
 else
     vagrant ssh master \
-        -c 'ansible-playbook /home/vagrant/openshift-ansible/playbooks/byo/config.yml'
+        -c 'ansible-playbook -vvv /home/vagrant/openshift-ansible/playbooks/byo/config.yml'
 fi
